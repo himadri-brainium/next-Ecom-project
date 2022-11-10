@@ -40,7 +40,7 @@ const validSchema = yup.object({
 const Register = () => {
   return (
     <>
-      <h1>Formik tutorial</h1>
+      <h1>Register Page</h1>
 
       <Formik
         validationSchema={validSchema}
