@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link"
 const Details = () => {
   const router = useRouter();
 
@@ -32,7 +33,7 @@ const Details = () => {
       ) : (
         <>
           <h1>Welcome {logindata.name}</h1>
-          <button className="btn btn-primary">My Aplication</button> <br/><br></br>
+          <button className="btn btn-warning"><Link href='/components/Create'>My Aplication</Link></button> <br/><br></br>
           <button onClick={userlogout} className="btn btn-danger">Logout</button>
         </>
       )}
