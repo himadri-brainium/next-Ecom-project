@@ -26,6 +26,12 @@ const validSchema = yup.object({
       "Minimum eight characters, at least one letter and one number"
     )
     .required("Password is required"),
+
+  confirmpassword: yup
+    .string()
+    .required('Please retype your password.')
+    .oneOf([yup.ref('password')], 'Your passwords do not match.'),
+
   gender: yup.string().required("Please enter Gender"),
   date: yup.date().required("Please enter your DOB"),
   post: yup.string().required("Please enter your post"),
@@ -34,6 +40,7 @@ const validSchema = yup.object({
     .min(20, "Too small string")
     .max(30, "Too Large string")
     .required("Please enter your details"),
+
 });
 
 //Main component
@@ -81,6 +88,10 @@ const Register = () => {
           <br />
           <ErrorMessage name="password" />
           <br />
+          <label>Confirm Password</label>
+          <Field name="confirmpassword" type="password"
+            placeholder="confirm your password..." />
+          <span><ErrorMessage name="confirmpassword" /></span><br/>
           <label>Gender</label>
           <br />
           <label>Male</label>

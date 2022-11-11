@@ -32,7 +32,8 @@ const Details = () => {
       ) : (
         <>
           <h1>Welcome {logindata.name}</h1>
-          <button onClick={userlogout}>Logout</button>
+          <button className="btn btn-primary">My Aplication</button> <br/><br></br>
+          <button onClick={userlogout} className="btn btn-danger">Logout</button>
         </>
       )}
     </>
