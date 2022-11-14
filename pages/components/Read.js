@@ -1,34 +1,33 @@
-import axios from 'axios'
-import Link from 'next/link'
+import axios from "axios";
+import Link from "next/link";
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
 const Read = () => {
+  const [data, setData] = useState([]); //To store the data which we get from api as a array
+  const [tabledark, setTabledark] = useState(""); //For toggling with dark mode
 
-      const [data, setData] = useState([]) //To store the data which we get from api as a array 
-      const [tabledark, setTabledark] = useState('') //For toggling with dark mode
+  function getData() {
+    axios
+      .get("https://636deabdb567eed48accca4e.mockapi.io/EmployeePortal")
+      .then((res) => {
+        // console.log(res.data)
+        setData(res.data);
+      });
+  }
+  useEffect(() => {
+    getData();
+  }, []); //whenever data is changed useeffect works
 
-      function getData() {
-            axios.get('https://636deabdb567eed48accca4e.mockapi.io/EmployeePortal')
-                  .then((res) => {
-                        // console.log(res.data)
-                        setData(res.data)
-                  }
-
-                  )
-      }
-      useEffect(() => {
-
-            getData()
-      }, [])  //whenever data is changed useeffect works 
-
-      function handelDelete(id) {
-            axios
-                  .delete(`https://636deabdb567eed48accca4e.mockapi.io/EmployeePortal/${id}`)
-                  .then(() => {
-                        getData();
-                  });
-      }
+  function handelDelete(id) {
+    axios
+      .delete(
+        `https://636deabdb567eed48accca4e.mockapi.io/EmployeePortal/${id}`
+      )
+      .then(() => {
+        getData();
+      });
+  }
 
 
       return (
@@ -64,8 +63,8 @@ const Read = () => {
                                                       <td>{accessData.reason}</td>
                                                       <td>{accessData.date}</td>
                                                       <td>{accessData.reporting_head}</td>
-                                                      <td ><button className='btn btn-success'>Edit</button> &nbsp;
-                                                      <button
+                                                      <td ><button className='btn btn-success'>Edit</button></td>
+                                                      <td><button
                                                             type="button"
                                                             class="btn btn-danger"
                                                             onClick={() => handelDelete(accessData.id)}
@@ -87,7 +86,12 @@ const Read = () => {
                   </table>
                   <Link href={'/components/Create'}>GO To Employee Form Page</Link>
             </>
-      )
-}
+          );
+        })}
+      </table>
+      <Link href={"/components/Create"}>GO To Employee Form Page</Link>
+    </>
+  );
+};
 
-export default Read
+export default Read;
