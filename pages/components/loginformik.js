@@ -61,6 +61,7 @@ const Loginformik = () => {
               }
             }
           } else {
+            alert("You are not registered, Please register first")
             router.push("/components/register");
           }
 
@@ -88,6 +89,10 @@ const Loginformik = () => {
           <Link href="/components/register">
             <button type="submit">Register</button>
           </Link>
+          <br /><br />
+          <span>
+            <Link href="/components/forgotpassword">Click if you forgot your password</Link>
+          </span>
         </Form>
       </Formik>
     </>

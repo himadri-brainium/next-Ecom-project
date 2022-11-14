@@ -64,6 +64,7 @@ const Register = () => {
         onSubmit={(values, { resetForm }) => {
           console.log(values);
           localStorage.setItem("User data", JSON.stringify(values));
+          // router.push("/components/loginformik");
           resetForm({ values: "" });
         }}
       >
