@@ -22,49 +22,70 @@ const Read = () => {
             getData()
       }, [])  //whenever data is changed useeffect works 
 
+      function handelDelete(id) {
+            axios
+                  .delete(`https://636deabdb567eed48accca4e.mockapi.io/EmployeePortal/${id}`)
+                  .then(() => {
+                        getData();
+                  });
+      }
 
 
-
-  return (
-    <div>
-      <h1>Employee Details</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Aplication For</th>
-            <th scope="col">Current Date</th>
-            <th scope="col">Reason</th>
-            <th scope="col">Apply Date</th>
-            <th scope="col">Reporting Head</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        {data.map((accessData) => {
-          return (
+      return (
             <>
-              <tbody>
-                <tr>
-                  <th scope="row">{accessData.id}</th>
-                  <td>{accessData.date}</td>
-                  <td>{accessData.aplication}</td>
-                  <td>{accessData.reporting_head}</td>
-                  <td>{accessData.date}</td>
-                  <td>{accessData.reason}</td>
-                  <td>
-                    <button className="btn btn-success">Edit</button>
-                  </td>
-                  <td scope="col">
-                    <button
-                      type="button"
-                      class="btn btn-danger"
-                      onClick={() => handelDelete(accessData.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+                  <div class="form-check form-switch">
+                        <input className="form-check-input" type="checkbox" onClick={() => {
+                              if (tabledark === 'table-dark') setTabledark('')
+                              else setTabledark('table-dark')
+                        }} />
+
+                  </div>
+                  <h1>Employee Details</h1>
+                  <table className={`table ${tabledark}`}>
+                        <thead>
+                              <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Aplication For</th>
+                                    <th scope="col">Current Date</th>
+                                    <th scope="col">Reason</th>
+                                    <th scope="col">Apply Date</th>
+                                    <th scope="col">Reporting Head</th>
+                                    <th scope="col">Action</th>
+                              </tr>
+                        </thead>
+                        {data.map((accessData) => {
+                              return (
+                                    <>
+                                          <tbody>
+                                                <tr>
+                                                      <th scope="row">{accessData.id}</th>
+                                                      <td>{accessData.aplication}</td>
+                                                      <td>{accessData.date}</td>
+                                                      <td>{accessData.reason}</td>
+                                                      <td>{accessData.date}</td>
+                                                      <td>{accessData.reporting_head}</td>
+                                                      <td ><button className='btn btn-success'>Edit</button></td>
+                                                      <td><button
+                                                            type="button"
+                                                            class="btn btn-danger"
+                                                            onClick={() => handelDelete(accessData.id)}
+                                                      >
+                                                            Delete
+                                                      </button></td>
+                                                </tr>
+
+                                          </tbody>
+
+                                    </>
+                              )
+                        }
+
+
+                        )
+
+                        }
+                  </table>
+                  <Link href={'/components/Create'}>GO To Employee Form Page</Link>
             </>
       )
 }
