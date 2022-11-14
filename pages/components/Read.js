@@ -29,66 +29,59 @@ const Read = () => {
       });
   }
 
-
-      return (
+  return (
+    <>
+      <div class="form-check form-switch">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          onClick={() => {
+            if (tabledark === "table-dark") setTabledark("");
+            else setTabledark("table-dark");
+          }}
+        />
+      </div>
+      <h1>Employee Details</h1>
+      <table className={`table ${tabledark}`}>
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Aplication For</th>
+            <th scope="col">Current Date</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Apply Date</th>
+            <th scope="col">Reporting Head</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        {data.map((accessData) => {
+          return (
             <>
-                  <div class="form-check form-switch">
-                        <input className="form-check-input" type="checkbox" onClick={() => {
-                              if (tabledark === 'table-dark') setTabledark('')
-                              else setTabledark('table-dark')
-                        }} />
-
-                  </div>
-                  <h1>Employee Details</h1>
-                  <table className={`table ${tabledark}`}>
-                        <thead>
-                              <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Aplication For</th>
-                                    <th scope="col">Current Date</th>
-                                    <th scope="col">Reason</th>
-                                    <th scope="col">Apply Date</th>
-                                    <th scope="col">Reporting Head</th>
-                                    <th scope="col">Action</th>
-                              </tr>
-                        </thead>
-                        {data.map((accessData) => {
-                              return (
-                                    <>
-                                          <tbody>
-                                                <tr>
-                                                      <th scope="row">{accessData.id}</th>
-                                                      <td>{accessData.aplication}</td>
-                                                      <td>{accessData.date}</td>
-                                                      <td>{accessData.reason}</td>
-                                                      <td>{accessData.date}</td>
-                                                      <td>{accessData.reporting_head}</td>
-                                                      <td ><button className='btn btn-success'>Edit</button></td>
-                                                      <td><button
-                                                            type="button"
-                                                            class="btn btn-danger"
-                                                            onClick={() => handelDelete(accessData.id)}
-                                                      >
-                                                            Delete
-                                                      </button></td>
-                                                </tr>
-
-                                          </tbody>
-
-                                    </>
-                              )
-                        }
-
-
-                        )
-
-                        }
-                  </table>
-                  <Link href={'/components/Create'}>GO To Employee Form Page</Link>
+              <tbody>
+                <tr>
+                  <th scope="row">{accessData.id}</th>
+                  <td>{accessData.aplication}</td>
+                  <td>{accessData.date}</td>
+                  <td>{accessData.reason}</td>
+                  <td>{accessData.date}</td>
+                  <td>{accessData.reporting_head}</td>
+                  <td>
+                    <button className="btn btn-success">Edit</button>
+                  &nbsp;
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      onClick={() => handelDelete(accessData.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
             </>
           );
         })}
-    
+      </table>
       <Link href={"/components/Create"}>GO To Employee Form Page</Link>
     </>
   );
