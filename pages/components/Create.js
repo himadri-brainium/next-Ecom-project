@@ -42,7 +42,7 @@ const Create = () => {
                         onSubmit={(values, { resetForm }) => {
                               
                               // console.log(values);
-                              localStorage.setItem("User data", JSON.stringify(values));
+                              localStorage.setItem("Empdata", JSON.stringify(values));
                               resetForm({ values: "" });
                               // console.log(values.apli)
                               const header = { "Access-Control-Allow-Origin": "*" }
