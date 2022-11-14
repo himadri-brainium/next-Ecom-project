@@ -55,13 +55,14 @@ const Read = () => {
           </tr>
         </thead>
         {data.map((accessData) => {
+          const mydate =new Date()
           return (
             <>
               <tbody>
                 <tr>
                   <th scope="row">{accessData.id}</th>
                   <td>{accessData.aplication}</td>
-                  <td>{accessData.date}</td>
+                  <td>{mydate.getDate()+'/'+mydate.getMonth()+'/'+mydate.getFullYear()}</td>
                   <td>{accessData.reason}</td>
                   <td>{accessData.date}</td>
                   <td>{accessData.reporting_head}</td>
