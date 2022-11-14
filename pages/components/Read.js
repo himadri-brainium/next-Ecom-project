@@ -88,7 +88,7 @@ const Read = () => {
             </>
           );
         })}
-      </table>
+    
       <Link href={"/components/Create"}>GO To Employee Form Page</Link>
     </>
   );
