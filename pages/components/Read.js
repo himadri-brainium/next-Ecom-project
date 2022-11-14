@@ -64,8 +64,8 @@ const Read = () => {
                                                       <td>{accessData.reason}</td>
                                                       <td>{accessData.date}</td>
                                                       <td>{accessData.reporting_head}</td>
-                                                      <td ><button className='btn btn-success'>Edit</button></td>
-                                                      <td><button
+                                                      <td ><button className='btn btn-success'>Edit</button> &nbsp;
+                                                      <button
                                                             type="button"
                                                             class="btn btn-danger"
                                                             onClick={() => handelDelete(accessData.id)}
