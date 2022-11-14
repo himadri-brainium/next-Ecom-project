@@ -5,14 +5,14 @@ import React, { useEffect, useState } from 'react'
 
 const Read = () => {
 
-      const [data, setStore] = useState([]) //To store the data which we get from api as a array 
+      const [data, setData] = useState([]) //To store the data which we get from api as a array 
       const [tabledark, setTabledark] = useState('') //For toggling with dark mode
 
       function getData() {
             axios.get('https://636deabdb567eed48accca4e.mockapi.io/EmployeePortal')
                   .then((res) => {
                         // console.log(res.data)
-                        setStore(res.data)
+                        setData(res.data)
                   }
 
                   )
