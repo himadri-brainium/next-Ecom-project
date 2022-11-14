@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 const Read = () => {
 
       const [data, setStore] = useState([]) //To store the data which we get from api as a array 
+      const [tabledark, setTabledark] = useState('') //For toggling with dark mode
 
       function getData() {
             axios.get('https://636deabdb567eed48accca4e.mockapi.io/EmployeePortal')
@@ -25,9 +26,16 @@ const Read = () => {
 
 
       return (
-            <div>
+            <>
+            <div class="form-check form-switch">
+        <input className="form-check-input" type="checkbox" onClick={()=>{
+            if(tabledark==='table-dark') setTabledark('')
+            else setTabledark('table-dark')
+        }} />
+  
+</div>
                   <h1>Employee Details</h1>
-                  <table class="table">
+                  <table className={`table ${tabledark}`}> 
                         <thead>
                               <tr>
                                     <th scope="col">Id</th>
@@ -66,7 +74,7 @@ const Read = () => {
                         }
                   </table>
                   <Link href={'/components/Create'}>GO To Employee Form Page</Link>
-            </div>
+            </>
       )
 }
 

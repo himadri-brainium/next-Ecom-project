@@ -58,7 +58,9 @@ const Create = () => {
                               },
 
                               )
-                          router.push('/components/Read')
+                              .then(()=>{
+                                    router.push('/components/Read')
+                              })
                         
                         }}
 
