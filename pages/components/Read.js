@@ -47,9 +47,9 @@ const Read = () => {
                                                       <th scope="row">{accessData.id}</th>
                                                       <td>{accessData.date}</td>
                                                       <td>{accessData.aplication}</td>
-                                                      <td>{accessData.reporting_head}</td>
-                                                      <td>{accessData.date}</td>
                                                       <td>{accessData.reason}</td>
+                                                      <td>{accessData.date}</td>
+                                                      <td>{accessData.reporting_head}</td>
                                                       <td ><button className='btn btn-success'>Edit</button></td>
                                                       <td><button className='btn btn-danger '>Delete</button></td>
                                                 </tr>
